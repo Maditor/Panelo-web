@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LocalToon — đọc webtoon offline ngay trên máy bạn, không cần upload, không cần server.">
+    <title>LocalToon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= ICON SPRITE ================= -->
+    <svg style="display:none" aria-hidden="true">
+
+        <symbol id="icon-diamond" viewBox="0 0 24 24">
+            <path d="M12 2l7 10-7 10-7-10 7-10z" fill="currentColor"/>
+        </symbol>
+
+        <symbol id="icon-home" viewBox="0 0 24 24">
+            <path d="M3 11l9-8 9 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-folder" viewBox="0 0 24 24">
+            <path d="M3 7a2 2 0 0 1 2-2h4.5l2 2H19a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-sparkles" viewBox="0 0 24 24">
+            <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" fill="currentColor"/>
+            <path d="M19 3v3M17.5 4.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </symbol>
+
+        <symbol id="icon-book" viewBox="0 0 24 24">
+            <path d="M4 5a2 2 0 0 1 2-2h6v18H6a2 2 0 0 1-2-2V5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20 5a2 2 0 0 0-2-2h-6v18h6a2 2 0 0 0 2-2V5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-book-open" viewBox="0 0 24 24">
+            <path d="M2 5.5C4 4.5 7 4 12 5.5V20c-5-1.5-8-1-10 0V5.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 5.5C20 4.5 17 4 12 5.5V20c5-1.5 8-1 10 0V5.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-tag" viewBox="0 0 24 24">
+            <path d="M12.6 2H4.8A1.8 1.8 0 0 0 3 3.8v7.8c0 .48.19.93.53 1.27l9 9a1.8 1.8 0 0 0 2.54 0l7.66-7.66a1.8 1.8 0 0 0 0-2.54l-9-9A1.8 1.8 0 0 0 12.6 2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="7.5" cy="7.5" r="1.3" fill="currentColor" stroke="none"/>
+        </symbol>
+
+        <symbol id="icon-x" viewBox="0 0 24 24">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </symbol>
+
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+            <path d="M20 12H4M10 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-chevron-left" viewBox="0 0 24 24">
+            <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+            <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-menu" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </symbol>
+
+        <symbol id="icon-scroll" viewBox="0 0 24 24">
+            <rect x="4" y="4" width="16" height="4" rx="1" fill="currentColor"/>
+            <rect x="4" y="10" width="16" height="4" rx="1" fill="currentColor"/>
+            <rect x="4" y="16" width="16" height="4" rx="1" fill="currentColor"/>
+        </symbol>
+
+        <symbol id="icon-page" viewBox="0 0 24 24">
+            <rect x="5" y="3" width="14" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M8.5 8h7M8.5 12h7M8.5 16h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </symbol>
+
+        <symbol id="icon-arrow-up-to-line" viewBox="0 0 24 24">
+            <path d="M4 4h16M12 20V8M7 13l5-5 5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-arrow-down-to-line" viewBox="0 0 24 24">
+            <path d="M4 20h16M12 4v12M7 11l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-plus" viewBox="0 0 24 24">
+            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>
+        </symbol>
+
+        <symbol id="icon-minus" viewBox="0 0 24 24">
+            <path d="M5 12h14" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>
+        </symbol>
+
+        <symbol id="icon-search" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </symbol>
+
+        <symbol id="icon-play" viewBox="0 0 24 24">
+            <path d="M6 4l14 8-14 8V4z" fill="currentColor"/>
+        </symbol>
+
+        <symbol id="icon-pencil" viewBox="0 0 24 24">
+            <path d="M12 20h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-check-circle" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 12.5l2.5 2.5L16 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-loader" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.5" stroke-opacity=".2"/>
+            <path d="M21 12a9 9 0 0 0-9-9" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        </symbol>
+
+    </svg>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="logo" onclick="showHome()">
+            <span class="logo-icon"><svg class="icon icon-lg"><use href="#icon-diamond"></use></svg></span>
+            <span>Local<span>Toon</span></span>
+        </div>
+
+        <div class="header-actions">
+            <button class="icon-btn" onclick="showHome()" title="Trang chủ"><svg class="icon"><use href="#icon-home"></use></svg></button>
+            <button class="icon-btn" onclick="openDataFolder()" title="Mở thư mục thư viện"><svg class="icon"><use href="#icon-folder"></use></svg></button>
+        </div>
+    </header>
+
+
+    <!-- ================= RECONNECT BANNER ================= -->
+    <div id="reconnectBanner" class="reconnect-banner hidden">
+        <span><svg class="icon"><use href="#icon-folder"></use></svg> Tìm thấy thư viện đã lưu trước đó. Bạn muốn kết nối lại không?</span>
+        <div class="reconnect-actions">
+            <button class="primary-btn" onclick="reconnectLibrary()">Kết nối lại</button>
+            <button class="icon-btn" onclick="dismissReconnectBanner()"><svg class="icon"><use href="#icon-x"></use></svg></button>
+        </div>
+    </div>
+
+
+    <!-- ================= APP ================= -->
+    <main id="app">
+
+        <!-- HOME -->
+        <section id="homePage" class="page active">
+
+            <div class="hero">
+                <div>
+                    <p class="hero-label">LOCAL WEBTOON LIBRARY</p>
+                    <h1>Thư viện truyện<br><span>ngay trên máy bạn.</span></h1>
+                    <p class="hero-description">
+                        Đọc truyện trực tiếp từ máy tính,
+                        không cần upload, không cần server.
+                    </p>
+
+<button class="primary-btn" onclick="initializeLibrary()">
+    <svg class="icon"><use href="#icon-sparkles"></use></svg> Khởi tạo thư viện
+</button>
+                </div>
+            </div>
+
+            <details class="how-it-works">
+                <summary><svg class="icon"><use href="#icon-book-open"></use></svg> Cách hoạt động</summary>
+                <div class="how-it-works-body">
+                    <p>
+                        LocalToon chỉ đọc ảnh từ một thư mục trên máy bạn —
+                        không có gì được tải lên internet.
+                    </p>
+                    <ol>
+                        <li>
+                            Lần đầu, bấm <strong><svg class="icon icon-sm"><use href="#icon-sparkles"></use></svg> Khởi tạo thư viện</strong> và chọn một thư mục trống
+                            (LocalToon sẽ tự tạo cấu trúc mẫu bên trong).
+                            Lần sau chỉ cần bấm <strong><svg class="icon icon-sm"><use href="#icon-folder"></use></svg></strong> để mở lại thư viện đã có.
+                        </li>
+                        <li>
+                            Mỗi truyện là một thư mục trong <code>DATA/Project/</code>,
+                            gồm thư mục <code>About</code> (chứa <code>info.json</code> và ảnh <code>thumbnail</code>)
+                            và thư mục <code>Chapter</code> (mỗi chapter một thư mục ảnh, đặt tên ảnh theo số thứ tự).
+                        </li>
+                        <li>
+                            Muốn thêm truyện mới, chỉ cần tạo thêm thư mục đúng cấu trúc trên rồi
+                            bấm <strong><svg class="icon icon-sm"><use href="#icon-folder"></use></svg></strong> chọn lại thư mục <code>DATA</code>.
+                        </li>
+                    </ol>
+                </div>
+            </details>
+
+            <div class="section-header">
+                <div>
+                    <h2>Thư viện</h2>
+                    <p id="libraryCount">Chưa có dữ liệu</p>
+                </div>
+
+                <div class="search-row">
+
+                    <div class="search-input-wrap">
+                        <svg class="icon search-icon"><use href="#icon-search"></use></svg>
+                        <input
+                            id="searchInput"
+                            class="search"
+                            placeholder="Tìm truyện..."
+                            oninput="applyFilters()"
+                        >
+                    </div>
+
+                    <div class="filter-wrap">
+
+                        <button
+                            id="filterToggleBtn"
+                            class="icon-btn filter-toggle-btn"
+                            onclick="toggleFilterPanel(event)"
+                            title="Lọc theo tag"
+                        >
+                            <svg class="icon"><use href="#icon-tag"></use></svg>
+                            <span id="filterBadge" class="filter-badge hidden">0</span>
+                        </button>
+
+                        <div id="filterPanel" class="filter-panel hidden">
+
+                            <div class="filter-panel-header">
+                                <span>Lọc theo tag</span>
+                                <button class="filter-clear-btn" onclick="clearFilters()">Xóa lọc</button>
+                            </div>
+
+                            <div id="filterTagList" class="filter-tag-list">
+                                <p class="filter-empty">Chưa có tag nào.</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="bookGrid" class="book-grid"></div>
+
+        </section>
+
+
+        <!-- BOOK DETAIL -->
+        <section id="detailPage" class="page">
+
+            <button class="back-btn" onclick="showHome()">
+                <svg class="icon"><use href="#icon-arrow-left"></use></svg> Quay lại
+            </button>
+
+            <div id="bookDetail"></div>
+
+        </section>
+
+
+        <!-- READER -->
+        <section id="readerPage" class="reader-page">
+
+            <div class="reader-toolbar">
+
+                <button onclick="closeReader()" title="Quay lại"><svg class="icon"><use href="#icon-arrow-left"></use></svg></button>
+
+                <div class="reader-title-wrap">
+                    <strong id="readerTitle">Chapter</strong>
+                </div>
+
+                <div class="reader-actions">
+                    <button id="readingModeBtn" onclick="toggleReadingMode()" title="Đổi chế độ đọc"><svg class="icon"><use href="#icon-scroll"></use></svg></button>
+                    <button onclick="openChapterModal()" title="Danh sách chapter"><svg class="icon"><use href="#icon-menu"></use></svg></button>
+                    <button onclick="previousChapter()" title="Chapter trước"><svg class="icon"><use href="#icon-chevron-left"></use></svg></button>
+                    <button onclick="nextChapter()" title="Chapter sau"><svg class="icon"><use href="#icon-chevron-right"></use></svg></button>
+                </div>
+
+            </div>
+
+            <div class="reader-progress">
+                <div id="readerProgressFill" class="reader-progress-fill"></div>
+            </div>
+
+            <div id="readerContent" class="reader-content"></div>
+
+            <div id="readerTools" class="reader-tools">
+                <button onclick="scrollReaderTop()" title="Lên đầu trang"><svg class="icon"><use href="#icon-arrow-up-to-line"></use></svg></button>
+
+                <div class="zoom-control">
+                    <button onclick="adjustZoom(25)" title="Phóng to"><svg class="icon icon-sm"><use href="#icon-plus"></use></svg></button>
+                    <span id="zoomLabel">100%</span>
+                    <button onclick="adjustZoom(-25)" title="Thu nhỏ"><svg class="icon icon-sm"><use href="#icon-minus"></use></svg></button>
+                </div>
+
+                <button onclick="scrollReaderBottom()" title="Xuống cuối trang"><svg class="icon"><use href="#icon-arrow-down-to-line"></use></svg></button>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= MODAL ================= -->
+
+    <div id="chapterModal" class="modal hidden">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+                <h3>Chọn Chapter</h3>
+                <button onclick="closeChapterModal()"><svg class="icon"><use href="#icon-x"></use></svg></button>
+            </div>
+
+            <div id="chapterList"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
+</html>
