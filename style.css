@@ -35,6 +35,11 @@
     height: 22px;
 }
 
+.icon-xl {
+    width: 46px;
+    height: 46px;
+}
+
 .icon-spin {
     animation: icon-spin 1s linear infinite;
 }
@@ -79,6 +84,10 @@ body {
     font-size: 21px;
     font-weight: 800;
     cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .logo span:last-child {
@@ -87,7 +96,7 @@ body {
 
 .logo-icon {
     color: var(--accent);
-    margin-right: 7px;
+    display: inline-flex;
 }
 
 .header-actions {
@@ -102,6 +111,10 @@ body {
 
     width: 38px;
     height: 38px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
     border-radius: 10px;
     cursor: pointer;
@@ -191,6 +204,10 @@ body {
     background: var(--accent);
     color: white;
 
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
     font-weight: 700;
     cursor: pointer;
 }
@@ -210,6 +227,10 @@ body {
 
     background: var(--surface2);
     color: white;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 
     font-weight: 700;
     cursor: pointer;
@@ -241,6 +262,12 @@ body {
 
     color: var(--text);
     font-size: 14px;
+}
+
+.reconnect-banner span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .reconnect-banner.hidden {
@@ -300,6 +327,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 8px;
 }
 
 .how-it-works summary::-webkit-details-marker {
@@ -369,7 +397,7 @@ body {
 .search {
     width: 260px;
 
-    padding: 12px 15px;
+    padding: 12px 15px 12px 42px;
 
     border-radius: 10px;
     border: 1px solid #2c2c31;
@@ -390,8 +418,24 @@ body {
     position: relative;
 }
 
+.search-input-wrap {
+    position: relative;
+    flex: 1;
+}
+
+.search-icon {
+    position: absolute;
+
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    color: var(--muted);
+    pointer-events: none;
+}
+
 .search-row .search {
-    width: 260px;
+    width: 100%;
     flex: 1;
 }
 
@@ -586,6 +630,10 @@ body {
 
     font-size: 15px;
 
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
     cursor: pointer;
 }
 
@@ -715,6 +763,10 @@ body {
 
     width: 38px;
     height: 38px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
     border-radius: 8px;
 
@@ -850,6 +902,10 @@ body {
 
     padding: 7px 14px;
 
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
     background: var(--surface2);
     color: white;
 
@@ -880,13 +936,16 @@ body {
     width: 42px;
     height: 42px;
 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     border-radius: 50%;
     border: 1px solid #2c2c31;
 
     background: rgba(21, 21, 24, .92);
     color: white;
 
-    font-size: 17px;
     cursor: pointer;
 
     backdrop-filter: blur(10px);
@@ -916,6 +975,10 @@ body {
     width: 30px;
     height: 30px;
 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     border: 0;
     border-radius: 50%;
 
@@ -923,7 +986,6 @@ body {
     color: white;
 
     cursor: pointer;
-    font-size: 15px;
     line-height: 1;
 }
 
@@ -987,7 +1049,9 @@ body {
 
     color: white;
 
-    font-size: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
     cursor: pointer;
 }

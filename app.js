@@ -13,6 +13,15 @@ let pendingHandle = null;
 
 
 /* =====================================================
+   ICON HELPER (dùng sprite SVG khai báo trong index.html)
+===================================================== */
+
+function icon(name, cls = "") {
+    return `<svg class="icon ${cls}"><use href="#icon-${name}"></use></svg>`;
+}
+
+
+/* =====================================================
    INDEXEDDB — LƯU THƯ MỤC ĐÃ CHỌN
 ===================================================== */
 
@@ -289,7 +298,7 @@ async function openDataFolder() {
 async function scanProjects() {
 
     document.getElementById("bookGrid").innerHTML =
-        `<div class="loading-state">⏳ Đang quét thư viện...</div>`;
+        `<div class="loading-state">${icon("loader", "icon-lg icon-spin")}<br>Đang quét thư viện...</div>`;
 
     revokeBookThumbnails();
 
@@ -476,7 +485,7 @@ function renderBooks(list) {
 
         grid.innerHTML = `
             <div style="grid-column:1/-1;padding:80px 20px;text-align:center;color:#777;">
-                📚
+                ${icon("book-open", "icon-xl")}
                 <br><br>
                 Chưa có truyện trong DATA/Project
             </div>
@@ -497,7 +506,7 @@ function renderBooks(list) {
             ${
                 book.thumbnail
                 ? `<img class="book-cover" src="${book.thumbnail}">`
-                : `<div class="book-cover" style="display:flex;align-items:center;justify-content:center;font-size:40px;">📖</div>`
+                : `<div class="book-cover" style="display:flex;align-items:center;justify-content:center;">${icon("book", "icon-lg")}</div>`
             }
 
             <div class="book-title">${escapeHTML(book.title || book.name)}</div>
@@ -658,7 +667,7 @@ function showBook(book) {
 
             actionButtons = `
                 <button class="primary-btn" onclick="openChapter(${progress.chapterIndex}, { startPage: ${progress.pageIndex || 0} })">
-                    ▶ Đọc tiếp: ${escapeHTML(chapterName)}
+                    ${icon("play")} Đọc tiếp: ${escapeHTML(chapterName)}
                 </button>
                 <button class="secondary-btn" onclick="openChapter(0)">
                     Đọc lại từ đầu
@@ -669,7 +678,7 @@ function showBook(book) {
 
             actionButtons = `
                 <button class="primary-btn" onclick="openChapter(0)">
-                    ▶ Đọc chapter đầu tiên
+                    ${icon("play")} Đọc chapter đầu tiên
                 </button>
             `;
         }
@@ -680,13 +689,13 @@ function showBook(book) {
             ${
                 book.thumbnail
                 ? `<img class="detail-cover" src="${book.thumbnail}">`
-                : `<div class="detail-cover" style="display:flex;align-items:center;justify-content:center;font-size:50px;">📖</div>`
+                : `<div class="detail-cover" style="display:flex;align-items:center;justify-content:center;">${icon("book", "icon-xl")}</div>`
             }
 
             <div class="detail-info">
                 <h1>${escapeHTML(book.title || book.name)}</h1>
 
-                ${book.author ? `<p>✍️ ${escapeHTML(book.author)}</p>` : ""}
+                ${book.author ? `<p>${icon("pencil", "icon-sm")} ${escapeHTML(book.author)}</p>` : ""}
 
                 <div class="tags">${genres}</div>
 
@@ -714,7 +723,7 @@ function showBook(book) {
                                 ? "Đang đọc dở • "
                                 : ""
                             }
-                            ${chapter.images.length} ảnh →
+                            ${chapter.images.length} ảnh ${icon("chevron-right", "icon-sm")}
                         </span>
                     </div>
                 `).join("")
@@ -745,7 +754,7 @@ async function openChapter(index, opts = {}) {
     updateReadingModeButton();
 
     const reader = document.getElementById("readerContent");
-    reader.innerHTML = `<div class="loading-state">⏳ Đang tải ảnh...</div>`;
+    reader.innerHTML = `<div class="loading-state">${icon("loader", "icon-lg icon-spin")}<br>Đang tải ảnh...</div>`;
 
     revokeChapterURLs();
 
@@ -803,8 +812,8 @@ function renderChapterContent() {
         const banner = document.createElement("div");
         banner.className = "next-chapter-banner";
         banner.innerHTML = hasNext
-            ? `<button class="primary-btn" onclick="nextChapter()">Chapter tiếp theo ▶</button>`
-            : `<p style="color:#777">🎉 Bạn đã đọc hết chapter mới nhất</p>`;
+            ? `<button class="primary-btn" onclick="nextChapter()">Chapter tiếp theo ${icon("chevron-right")}</button>`
+            : `<p style="color:#777">${icon("check-circle", "icon-sm")} Bạn đã đọc hết chapter mới nhất</p>`;
         reader.appendChild(banner);
 
     } else {
@@ -816,9 +825,9 @@ function renderChapterContent() {
         const nav = document.createElement("div");
         nav.className = "page-nav";
         nav.innerHTML = `
-            <button onclick="prevPage()">‹ Trước</button>
+            <button onclick="prevPage()">${icon("chevron-left", "icon-sm")} Trước</button>
             <span>${currentPageIndex + 1} / ${currentChapterImageURLs.length}</span>
-            <button onclick="nextPage()">Sau ›</button>
+            <button onclick="nextPage()">Sau ${icon("chevron-right", "icon-sm")}</button>
         `;
         reader.appendChild(nav);
     }
@@ -897,10 +906,10 @@ function updateReadingModeButton() {
     if (!btn) return;
 
     if (readingMode === "scroll") {
-        btn.textContent = "📜";
+        btn.innerHTML = icon("scroll");
         btn.title = "Đang: Cuộn dọc — bấm để đổi sang Lật trang";
     } else {
-        btn.textContent = "📄";
+        btn.innerHTML = icon("page");
         btn.title = "Đang: Lật trang — bấm để đổi sang Cuộn dọc";
     }
 }
@@ -993,7 +1002,7 @@ function openChapterModal() {
     list.innerHTML = currentBook.chapters.map((chapter, index) => `
         <div class="chapter-item" onclick="closeChapterModal(); openChapter(${index})">
             <span class="chapter-name">
-                ${index === currentChapterIndex ? "▶ " : ""}${escapeHTML(chapter.name)}
+                ${index === currentChapterIndex ? icon("play", "icon-sm") + " " : ""}${escapeHTML(chapter.name)}
             </span>
             <span class="chapter-number">${chapter.images.length} ảnh</span>
         </div>
