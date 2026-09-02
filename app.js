@@ -81,11 +81,11 @@ function applyViewMode() {
     updateViewModeLabel();
 }
 
-function cycleViewMode() {
+function setViewMode(mode) {
 
-    const order = ["auto", "mobile", "desktop"];
-    const nextIndex = (order.indexOf(viewModePreference) + 1) % order.length;
-    viewModePreference = order[nextIndex];
+    if (!["auto", "mobile", "desktop"].includes(mode)) return;
+
+    viewModePreference = mode;
 
     try {
         localStorage.setItem("vt-view-mode", viewModePreference);
@@ -98,12 +98,9 @@ function cycleViewMode() {
 
 function updateViewModeLabel() {
 
-    const btn = document.getElementById("viewModeBtn");
-    if (!btn) return;
-
-    const modeText = { auto: "Tự động", mobile: "Mobile", desktop: "Desktop" }[viewModePreference];
-    btn.title = `Chế độ hiển thị: ${modeText} — bấm để đổi`;
-    btn.classList.toggle("is-forced", viewModePreference !== "auto");
+    document.querySelectorAll(".view-mode-option").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.mode === viewModePreference);
+    });
 }
 
 let readOnlyMode = false;

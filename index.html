@@ -20,10 +20,14 @@
             <path d="M10 13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
         </symbol>
 
-        <symbol id="icon-device" viewBox="0 0 24 24">
-            <rect x="2" y="4" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M6 18h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            <rect x="17" y="9" width="6" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <symbol id="icon-monitor" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="13" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </symbol>
+
+        <symbol id="icon-phone" viewBox="0 0 24 24">
+            <rect x="7" y="2" width="10" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M11 19h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
         </symbol>
 
         <symbol id="icon-more" viewBox="0 0 24 24">
@@ -221,7 +225,17 @@
             <button class="icon-btn" onclick="showHome()" title="Trang chủ"><svg class="icon"><use href="#icon-home"></use></svg></button>
             <button class="icon-btn" onclick="openDataFolder()" title="Mở thư mục thư viện" id="openFolderBtn"><svg class="icon"><use href="#icon-folder"></use></svg></button>
             <button class="icon-btn" onclick="openDriveModal()" title="Kết nối Google Drive"><svg class="icon"><use href="#icon-cloud"></use></svg></button>
-            <button class="icon-btn" onclick="cycleViewMode()" title="Chế độ hiển thị: Tự động — bấm để đổi" id="viewModeBtn"><svg class="icon"><use href="#icon-device"></use></svg></button>
+            <div class="view-mode-group" title="Chế độ hiển thị">
+                <button class="view-mode-option" data-mode="auto" onclick="setViewMode('auto')" title="Tự động">
+                    <svg class="icon icon-sm"><use href="#icon-sparkles"></use></svg>
+                </button>
+                <button class="view-mode-option" data-mode="desktop" onclick="setViewMode('desktop')" title="Desktop">
+                    <svg class="icon icon-sm"><use href="#icon-monitor"></use></svg>
+                </button>
+                <button class="view-mode-option" data-mode="mobile" onclick="setViewMode('mobile')" title="Mobile">
+                    <svg class="icon icon-sm"><use href="#icon-phone"></use></svg>
+                </button>
+            </div>
 
             <button class="icon-btn header-secondary" onclick="openAppearanceModal()" title="Giao diện"><svg class="icon"><use href="#icon-palette"></use></svg></button>
             <button class="icon-btn header-secondary" onclick="openBackupModal()" title="Backup dữ liệu"><svg class="icon"><use href="#icon-backup"></use></svg></button>
