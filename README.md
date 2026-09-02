@@ -19,7 +19,6 @@ chủ trung gian, không cần tài khoản.**
 - 🎨 Đổi màu giao diện + ảnh nền riêng
 - 💾 Xuất/nhập backup toàn bộ cấu hình ra 1 file
 - 📱 Giao diện tối ưu riêng cho mobile (tự nhận diện hoặc chọn tay)
-- 🖥️ Đóng gói được thành app desktop thật bằng [Tauri](https://tauri.app)
 
 ## 🚀 Bắt đầu dùng
 
