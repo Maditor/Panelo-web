@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LocalToon — đọc webtoon offline ngay trên máy bạn, không cần upload, không cần server.">
-    <title>LocalToon</title>
+    <meta name="description" content="Panelo — đọc webtoon offline ngay trên máy bạn, không cần upload, không cần server.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>Panelo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,8 +14,21 @@
     <!-- ================= ICON SPRITE ================= -->
     <svg style="display:none" aria-hidden="true">
 
+        <symbol id="icon-backup" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M5 9v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </symbol>
+
+        <symbol id="icon-more" viewBox="0 0 24 24">
+            <circle cx="5" cy="12" r="1.8" fill="currentColor"/>
+            <circle cx="12" cy="12" r="1.8" fill="currentColor"/>
+            <circle cx="19" cy="12" r="1.8" fill="currentColor"/>
+        </symbol>
+
         <symbol id="icon-diamond" viewBox="0 0 24 24">
-            <path d="M12 2l7 10-7 10-7-10 7-10z" fill="currentColor"/>
+            <path d="M12 5.5L4.5 8v8L12 13V5.5z" fill="currentColor"/>
+            <path d="M12 5.5L19.5 8v8L12 13V5.5z" fill="currentColor" fill-opacity=".7"/>
         </symbol>
 
         <symbol id="icon-home" viewBox="0 0 24 24">
@@ -67,9 +81,20 @@
         </symbol>
 
         <symbol id="icon-scroll" viewBox="0 0 24 24">
-            <rect x="4" y="4" width="16" height="4" rx="1" fill="currentColor"/>
-            <rect x="4" y="10" width="16" height="4" rx="1" fill="currentColor"/>
-            <rect x="4" y="16" width="16" height="4" rx="1" fill="currentColor"/>
+            <rect x="6" y="2.5" width="12" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <rect x="6" y="11" width="12" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 19.5v2.3M9.3 19.8l2.7 2.7 2.7-2.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-direction" viewBox="0 0 24 24">
+            <path d="M4 8h13M17 8l-3-3M17 8l-3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20 16H7M7 16l3-3M7 16l3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-columns" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="5" height="16" rx="1" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <rect x="9.5" y="4" width="5" height="16" rx="1" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <rect x="16" y="4" width="5" height="16" rx="1" fill="none" stroke="currentColor" stroke-width="1.8"/>
         </symbol>
 
         <symbol id="icon-page" viewBox="0 0 24 24">
@@ -102,9 +127,33 @@
             <path d="M6 4l14 8-14 8V4z" fill="currentColor"/>
         </symbol>
 
+        <symbol id="icon-palette" viewBox="0 0 24 24">
+            <path d="M12 3a9 9 0 1 0 0 18c1.1 0 2-.9 2-2 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.2 0-.8.7-1.5 1.5-1.5H16a4 4 0 0 0 4-4c0-4.4-3.6-8-8-8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="7.5" cy="10.5" r="1.2" fill="currentColor" stroke="none"/>
+            <circle cx="10" cy="7" r="1.2" fill="currentColor" stroke="none"/>
+            <circle cx="14.5" cy="7.3" r="1.2" fill="currentColor" stroke="none"/>
+        </symbol>
+
         <symbol id="icon-pencil" viewBox="0 0 24 24">
             <path d="M12 20h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-star" viewBox="0 0 24 24">
+            <path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-star-filled" viewBox="0 0 24 24">
+            <path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" fill="currentColor"/>
+        </symbol>
+
+        <symbol id="icon-circle" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        </symbol>
+
+        <symbol id="icon-sort" viewBox="0 0 24 24">
+            <path d="M6 4v14M6 18l-3-3M6 18l3-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18 20V6M18 6l3 3M18 6l-3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </symbol>
 
         <symbol id="icon-check-circle" viewBox="0 0 24 24">
@@ -117,18 +166,78 @@
             <path d="M21 12a9 9 0 0 0-9-9" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
         </symbol>
 
+        <symbol id="icon-cloud" viewBox="0 0 24 24">
+            <path d="M7 18h10.5a3.5 3.5 0 0 0 .4-6.98A6 6 0 0 0 6.2 9.4 4.3 4.3 0 0 0 7 18z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-refresh" viewBox="0 0 24 24">
+            <path d="M4 12a8 8 0 0 1 14.5-4.5M20 12a8 8 0 0 1-14.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.5 3v4.5H14M5.5 21v-4.5H10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-settings" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="icon-eye" viewBox="0 0 24 24">
+            <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+        </symbol>
+
+        <symbol id="icon-eye-off" viewBox="0 0 24 24">
+            <path d="M9.9 9.9a3 3 0 0 0 4.2 4.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6.5 6.6C4 8.3 2 12 2 12s4 7 10 7a9.6 9.6 0 0 0 3.6-.7M17.4 17.4A17.6 17.6 0 0 0 22 12s-4-7-10-7c-.6 0-1.1.04-1.7.13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 3l18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </symbol>
+
     </svg>
+
+    <input
+        type="file"
+        id="folderPickerFallback"
+        webkitdirectory
+        directory
+        multiple
+        style="display:none"
+        onchange="handleFallbackFolderSelect(event)"
+    >
+
 
     <!-- ================= HEADER ================= -->
     <header class="header">
         <div class="logo" onclick="showHome()">
             <span class="logo-icon"><svg class="icon icon-lg"><use href="#icon-diamond"></use></svg></span>
-            <span>Local<span>Toon</span></span>
+            <span>Panel<span>o</span></span>
         </div>
 
         <div class="header-actions">
             <button class="icon-btn" onclick="showHome()" title="Trang chủ"><svg class="icon"><use href="#icon-home"></use></svg></button>
-            <button class="icon-btn" onclick="openDataFolder()" title="Mở thư mục thư viện"><svg class="icon"><use href="#icon-folder"></use></svg></button>
+            <button class="icon-btn" onclick="openDataFolder()" title="Mở thư mục thư viện" id="openFolderBtn"><svg class="icon"><use href="#icon-folder"></use></svg></button>
+            <button class="icon-btn" onclick="openDriveModal()" title="Kết nối Google Drive"><svg class="icon"><use href="#icon-cloud"></use></svg></button>
+
+            <button class="icon-btn header-secondary" onclick="openAppearanceModal()" title="Giao diện"><svg class="icon"><use href="#icon-palette"></use></svg></button>
+            <button class="icon-btn header-secondary" onclick="openBackupModal()" title="Backup dữ liệu"><svg class="icon"><use href="#icon-backup"></use></svg></button>
+            <button class="icon-btn header-secondary" onclick="openStructureModal()" title="Cấu trúc thư mục"><svg class="icon"><use href="#icon-settings"></use></svg></button>
+
+            <div class="filter-wrap header-more-wrap">
+                <button class="icon-btn" onclick="toggleHeaderMorePanel(event)" title="Thêm">
+                    <svg class="icon"><use href="#icon-more"></use></svg>
+                </button>
+                <div id="headerMorePanel" class="filter-panel header-more-panel hidden">
+                    <div class="filter-tag-list">
+                        <div class="chapter-item" onclick="closeHeaderMorePanel(); openAppearanceModal()">
+                            <span class="chapter-name"><svg class="icon icon-sm"><use href="#icon-palette"></use></svg> Giao diện</span>
+                        </div>
+                        <div class="chapter-item" onclick="closeHeaderMorePanel(); openBackupModal()">
+                            <span class="chapter-name"><svg class="icon icon-sm"><use href="#icon-backup"></use></svg> Backup dữ liệu</span>
+                        </div>
+                        <div class="chapter-item" onclick="closeHeaderMorePanel(); openStructureModal()">
+                            <span class="chapter-name"><svg class="icon icon-sm"><use href="#icon-settings"></use></svg> Cấu trúc thư mục</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -153,14 +262,31 @@
                 <div>
                     <p class="hero-label">LOCAL WEBTOON LIBRARY</p>
                     <h1>Thư viện truyện<br><span>ngay trên máy bạn.</span></h1>
-                    <p class="hero-description">
+                    <p class="hero-description" id="heroDescription">
                         Đọc truyện trực tiếp từ máy tính,
                         không cần upload, không cần server.
                     </p>
 
-<button class="primary-btn" onclick="initializeLibrary()">
+<button class="primary-btn" id="heroInitBtn" onclick="initializeLibrary()">
     <svg class="icon"><use href="#icon-sparkles"></use></svg> Khởi tạo thư viện
 </button>
+<button class="primary-btn hidden" id="heroDriveBtn" onclick="openDriveModal()">
+    <svg class="icon"><use href="#icon-cloud"></use></svg> Kết nối Google Drive
+</button>
+                </div>
+            </div>
+
+            <div id="mobileGuideBanner" class="reconnect-banner hidden">
+                <span>
+                    <svg class="icon"><use href="#icon-cloud"></use></svg>
+                    Trên điện thoại, mở/tạo thư mục trên máy không được hỗ trợ tốt —
+                    dùng Google Drive để đọc mượt hơn nhiều.
+                </span>
+                <div class="reconnect-actions">
+                    <button class="primary-btn" onclick="openDriveModal()">Kết nối Drive</button>
+                    <button class="icon-btn" onclick="document.getElementById('mobileGuideBanner').classList.add('hidden')">
+                        <svg class="icon"><use href="#icon-x"></use></svg>
+                    </button>
                 </div>
             </div>
 
@@ -168,23 +294,26 @@
                 <summary><svg class="icon"><use href="#icon-book-open"></use></svg> Cách hoạt động</summary>
                 <div class="how-it-works-body">
                     <p>
-                        LocalToon chỉ đọc ảnh từ một thư mục trên máy bạn —
-                        không có gì được tải lên internet.
+                        Panelo đọc thẳng ảnh từ thư mục trên máy bạn (hoặc Google Drive) —
+                        không tải lên đâu cả, không cần tài khoản.
                     </p>
                     <ol>
                         <li>
-                            Lần đầu, bấm <strong><svg class="icon icon-sm"><use href="#icon-sparkles"></use></svg> Khởi tạo thư viện</strong> và chọn một thư mục trống
-                            (LocalToon sẽ tự tạo cấu trúc mẫu bên trong).
-                            Lần sau chỉ cần bấm <strong><svg class="icon icon-sm"><use href="#icon-folder"></use></svg></strong> để mở lại thư viện đã có.
+                            Lần đầu dùng: bấm <strong><svg class="icon icon-sm"><use href="#icon-sparkles"></use></svg> Khởi tạo thư viện</strong>
+                            và chọn một thư mục trống — app tự tạo sẵn cấu trúc mẫu.
+                            Lần sau chỉ cần bấm <strong><svg class="icon icon-sm"><use href="#icon-folder"></use></svg></strong> để mở lại.
+                            <em>(Trên điện thoại thì bỏ qua bước này — dùng Google Drive ở bước 3 luôn cho gọn.)</em>
                         </li>
                         <li>
-                            Mỗi truyện là một thư mục trong <code>DATA/Project/</code>,
-                            gồm thư mục <code>About</code> (chứa <code>info.json</code> và ảnh <code>thumbnail</code>)
-                            và thư mục <code>Chapter</code> (mỗi chapter một thư mục ảnh, đặt tên ảnh theo số thứ tự).
+                            Mỗi truyện là một thư mục, bên trong gồm ảnh bìa và các thư mục
+                            chapter (mỗi chapter chứa ảnh, đặt tên theo số thứ tự để đọc đúng thứ tự).
                         </li>
                         <li>
-                            Muốn thêm truyện mới, chỉ cần tạo thêm thư mục đúng cấu trúc trên rồi
-                            bấm <strong><svg class="icon icon-sm"><use href="#icon-folder"></use></svg></strong> chọn lại thư mục <code>DATA</code>.
+                            Muốn đọc từ Google Drive thay vì máy tính? Bấm
+                            <strong><svg class="icon icon-sm"><use href="#icon-cloud"></use></svg></strong>.
+                            Thư viện đặt tên thư mục khác đi? Bấm
+                            <strong><svg class="icon icon-sm"><use href="#icon-settings"></use></svg></strong>
+                            để tuỳ chỉnh.
                         </li>
                     </ol>
                 </div>
@@ -192,7 +321,12 @@
 
             <div class="section-header">
                 <div>
-                    <h2>Thư viện</h2>
+                    <h2>
+                        Thư viện
+                        <button class="icon-btn refresh-btn" onclick="refreshLibrary()" title="Làm mới thư viện">
+                            <svg class="icon icon-sm"><use href="#icon-refresh"></use></svg>
+                        </button>
+                    </h2>
                     <p id="libraryCount">Chưa có dữ liệu</p>
                 </div>
 
@@ -206,6 +340,46 @@
                             placeholder="Tìm truyện..."
                             oninput="applyFilters()"
                         >
+                    </div>
+
+                    <div class="filter-wrap">
+
+                        <button
+                            id="sortToggleBtn"
+                            class="icon-btn filter-toggle-btn"
+                            onclick="toggleSortPanel(event)"
+                            title="Sắp xếp"
+                        >
+                            <svg class="icon"><use href="#icon-sort"></use></svg>
+                        </button>
+
+                        <div id="sortPanel" class="filter-panel hidden">
+
+                            <div class="filter-panel-header">
+                                <span>Sắp xếp theo</span>
+                            </div>
+
+                            <div class="filter-tag-list">
+                                <label class="filter-tag-item">
+                                    <input type="radio" name="sortOrder" value="default" onchange="handleSortChange(this.value)">
+                                    <span>Mặc định (theo thư mục)</span>
+                                </label>
+                                <label class="filter-tag-item">
+                                    <input type="radio" name="sortOrder" value="name" onchange="handleSortChange(this.value)">
+                                    <span>Tên A-Z</span>
+                                </label>
+                                <label class="filter-tag-item">
+                                    <input type="radio" name="sortOrder" value="recent" onchange="handleSortChange(this.value)">
+                                    <span>Đọc gần đây</span>
+                                </label>
+                                <label class="filter-tag-item">
+                                    <input type="radio" name="sortOrder" value="chapters" onchange="handleSortChange(this.value)">
+                                    <span>Nhiều chapter nhất</span>
+                                </label>
+                            </div>
+
+                        </div>
+
                     </div>
 
                     <div class="filter-wrap">
@@ -268,6 +442,14 @@
                 </div>
 
                 <div class="reader-actions">
+                    <button id="readingDirectionBtn" class="pages-per-view-btn hidden" onclick="toggleReadingDirection()" title="Hướng đọc trang">
+                        <svg class="icon icon-sm"><use href="#icon-direction"></use></svg>
+                        <span id="readingDirectionLabel">Trái→Phải</span>
+                    </button>
+                    <button id="pagesPerViewBtn" class="pages-per-view-btn hidden" onclick="cyclePagesPerView()" title="Số trang xem cùng lúc">
+                        <svg class="icon icon-sm"><use href="#icon-columns"></use></svg>
+                        <span id="pagesPerViewLabel">1</span>
+                    </button>
                     <button id="readingModeBtn" onclick="toggleReadingMode()" title="Đổi chế độ đọc"><svg class="icon"><use href="#icon-scroll"></use></svg></button>
                     <button onclick="openChapterModal()" title="Danh sách chapter"><svg class="icon"><use href="#icon-menu"></use></svg></button>
                     <button onclick="previousChapter()" title="Chapter trước"><svg class="icon"><use href="#icon-chevron-left"></use></svg></button>
@@ -299,6 +481,12 @@
     </main>
 
 
+    <!-- ================= FOOTER ================= -->
+    <footer class="app-footer">
+        Panelo — made with <span class="app-footer-heart">♥</span> by Maditor
+    </footer>
+
+
     <!-- ================= MODAL ================= -->
 
     <div id="chapterModal" class="modal hidden">
@@ -311,6 +499,241 @@
             </div>
 
             <div id="chapterList"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= GOOGLE DRIVE MODAL ================= -->
+
+    <div id="driveModal" class="modal hidden">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+                <h3>Kết nối Google Drive</h3>
+                <button onclick="closeDriveModal()"><svg class="icon"><use href="#icon-x"></use></svg></button>
+            </div>
+
+            <div class="drive-modal-body">
+
+                <p class="drive-modal-intro">
+                    Đọc thư viện từ thư mục Google Drive đã chia sẻ công khai —
+                    không cần đăng nhập, không cần lấy link từng ảnh.
+                </p>
+
+                <ol class="drive-guide">
+                    <li>
+                        Vào <a href="https://console.cloud.google.com/apis/library/drive.googleapis.com" target="_blank" rel="noopener">Google Cloud Console</a>,
+                        tạo project, bật <strong>Google Drive API</strong> (muốn dùng Sheet cho phần
+                        mô tả bên dưới thì bật thêm <strong>Sheets API</strong> luôn, cùng project).
+                    </li>
+                    <li>
+                        Vào <strong>Credentials</strong> → <strong>Create credentials</strong> → chọn <strong>API key</strong> (không cần OAuth).
+                    </li>
+                    <li>
+                        Chia sẻ thư mục truyện trên Drive ở chế độ <strong>"Bất kỳ ai có đường liên kết – Người xem"</strong>,
+                        bấm <strong>Copy link</strong>, dán thẳng vào ô "Thư mục Drive" bên dưới — không cần tự cắt ID.
+                    </li>
+                </ol>
+
+                <label class="drive-field">
+                    <span>API key</span>
+                    <div class="api-key-wrap">
+                        <input type="password" id="driveApiKeyInput" placeholder="AIzaSy...">
+                        <button type="button" class="api-key-toggle" onclick="toggleApiKeyVisibility()" title="Hiện/ẩn API key">
+                            <svg class="icon icon-sm"><use id="apiKeyEyeIcon" href="#icon-eye"></use></svg>
+                        </button>
+                    </div>
+                </label>
+
+                <label class="drive-field">
+                    <span>Thư mục Drive (dán link chia sẻ hoặc Folder ID)</span>
+                    <input type="text" id="driveFolderIdInput" placeholder="Dán link chia sẻ, ví dụ https://drive.google.com/drive/folders/...">
+                </label>
+
+                <label class="drive-field">
+                    <span>Sheet chứa thông tin truyện (tuỳ chọn — thay cho info.json)</span>
+                    <input type="text" id="metadataSheetIdInput" placeholder="Dán link Sheet lúc đang mở">
+                </label>
+
+                <label class="drive-field">
+                    <span>Tên tab trong Sheet (để trống = tự nhận)</span>
+                    <input type="text" id="metadataSheetTabInput" placeholder="Để trống nếu không chắc tên tab">
+                </label>
+
+                <p class="drive-note">
+                    Sheet cần cột: <code>folder, title, alternativetitle, author, artist, status, genres, description</code>
+                    (folder trùng tên thư mục truyện), chia sẻ công khai giống thư mục Drive ở trên.
+                </p>
+
+                <button class="primary-btn" onclick="handleConnectDriveClick()">
+                    <svg class="icon"><use href="#icon-cloud"></use></svg> Kết nối
+                </button>
+
+                <p class="drive-note">
+                    API key chỉ lưu trên trình duyệt bạn, nhưng hiện trong mã nguồn trang nên
+                    chỉ dùng cho thư viện đã công khai. Key bị giới hạn theo API thì nhớ tick cả
+                    Drive API lẫn Sheets API.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FOLDER STRUCTURE MODAL ================= -->
+
+    <div id="structureModal" class="modal hidden">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+                <h3>Cấu trúc thư mục</h3>
+                <button onclick="closeStructureModal()"><svg class="icon"><use href="#icon-x"></use></svg></button>
+            </div>
+
+            <div class="structure-modal-body">
+
+                <p class="drive-modal-intro">
+                    Cấu trúc: <code>(thư mục cha) / Tên truyện / (ảnh bìa) + (chapter)</code>.
+                    Để trống ô nào = cấp đó không tồn tại, dùng luôn thư mục truyện cho phần đó.
+                </p>
+
+                <label class="drive-field">
+                    <span>Thư mục cha (chứa các bộ truyện)</span>
+                    <input type="text" id="projectFolderNameInput" placeholder="Project">
+                </label>
+
+                <label class="drive-field">
+                    <span>Thư mục chứa ảnh bìa (trong mỗi bộ truyện)</span>
+                    <input type="text" id="aboutFolderNameInput" placeholder="About — để trống nếu ảnh nằm ngay trong thư mục truyện, hoặc Extra/About nếu có thêm cấp">
+                </label>
+
+                <label class="drive-field">
+                    <span>Thư mục chứa chapter (trong mỗi bộ truyện)</span>
+                    <input type="text" id="chapterFolderNameInput" placeholder="Chapter — hoặc Extra/Type nếu có thêm cấp thư mục trung gian">
+                </label>
+
+                <p class="drive-note">
+                    Tên thư mục chapter không cần đúng dạng "Chapter N" — app tự sắp theo thứ tự
+                    tự nhiên. Có thêm cấp trung gian thì nối bằng <code>/</code>, ví dụ <code>Extra/Type</code>.
+                    Tên <strong>file</strong> ảnh bìa (<code>thumbnail.jpg</code>/.png/...) giữ nguyên như cũ.
+                </p>
+
+                <div class="structure-modal-actions">
+                    <button class="secondary-btn" onclick="resetStructureFields()">
+                        Khôi phục mặc định
+                    </button>
+                    <button class="primary-btn" onclick="handleSaveStructureClick()">
+                        <svg class="icon"><use href="#icon-check-circle"></use></svg> Lưu &amp; quét lại
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= APPEARANCE MODAL ================= -->
+
+    <div id="appearanceModal" class="modal hidden">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+                <h3>Giao diện</h3>
+                <button onclick="closeAppearanceModal()"><svg class="icon"><use href="#icon-x"></use></svg></button>
+            </div>
+
+            <div class="appearance-modal-body">
+
+                <p class="drive-modal-intro">
+                    Đổi màu chủ đạo và ảnh nền cho riêng bạn — lưu trên trình duyệt này,
+                    không ảnh hưởng tới người khác dùng chung app.
+                </p>
+
+                <span class="appearance-section-label">Màu chủ đạo</span>
+                <div id="themeSwatches" class="theme-swatches"></div>
+
+                <label class="drive-field">
+                    <span>Hoặc tự chọn màu bất kỳ</span>
+                    <input type="color" id="customColorInput" class="color-picker-input" value="#8b5cf6" onchange="handleCustomColorChange(this.value)">
+                </label>
+
+                <span class="appearance-section-label">Ảnh nền (tuỳ chọn)</span>
+
+                <div id="bgImagePreviewWrap" class="bg-image-preview-wrap hidden">
+                    <img id="bgImagePreview" class="bg-image-preview">
+                    <button class="secondary-btn" onclick="removeBackgroundImageClick()">
+                        <svg class="icon icon-sm"><use href="#icon-x"></use></svg> Xoá ảnh nền
+                    </button>
+                </div>
+
+                <label class="bg-upload-label">
+                    <svg class="icon"><use href="#icon-folder"></use></svg>
+                    Chọn ảnh từ máy
+                    <input type="file" id="bgImageInput" accept="image/*" onchange="handleBgImageSelect(event)" hidden>
+                </label>
+
+                <label class="drive-field">
+                    <span>Độ tối lớp phủ (ảnh sáng/chói thì tăng lên cho chữ dễ đọc)</span>
+                    <input type="range" id="bgOpacityInput" min="0.3" max="0.95" step="0.05" value="0.75" oninput="handleBgOpacityInput(this.value)">
+                </label>
+
+                <button class="secondary-btn appearance-reset-btn" onclick="resetAppearance()">
+                    Khôi phục mặc định
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= BACKUP MODAL ================= -->
+
+    <div id="backupModal" class="modal hidden">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+                <h3>Backup dữ liệu</h3>
+                <button onclick="closeBackupModal()"><svg class="icon"><use href="#icon-x"></use></svg></button>
+            </div>
+
+            <div class="drive-modal-body">
+
+                <p class="drive-modal-intro">
+                    Gộp toàn bộ cấu hình — API key, cấu trúc thư mục, giao diện, ảnh nền,
+                    yêu thích, tiến độ đọc, đã đọc từng chapter — thành 1 file duy nhất, để
+                    lưu dự phòng hoặc chuyển sang máy/trình duyệt khác.
+                </p>
+
+                <button class="primary-btn" onclick="handleExportBackupClick()" style="width:100%;justify-content:center;">
+                    <svg class="icon"><use href="#icon-backup"></use></svg> Xuất file backup
+                </button>
+
+                <label class="bg-upload-label" style="width:100%;justify-content:center;box-sizing:border-box;">
+                    <svg class="icon"><use href="#icon-folder"></use></svg>
+                    Chọn file backup để nhập
+                    <input type="file" id="backupImportInput" accept="application/json,.json" onchange="handleImportBackupSelect(event)" hidden>
+                </label>
+
+                <p class="drive-note">
+                    Nhập file backup sẽ <strong>ghi đè</strong> toàn bộ cấu hình hiện tại trên
+                    trình duyệt này. Ảnh truyện thật không nằm trong file backup (vẫn ở máy/Drive
+                    của bạn) — sau khi nhập, bạn cần chọn lại thư mục/kết nối Drive như bình
+                    thường (trình duyệt không cho lưu quyền truy cập thư mục qua file được).
+                </p>
+
+            </div>
 
         </div>
 
