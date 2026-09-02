@@ -1750,10 +1750,6 @@ body.has-bg-image .reader-page {
         display: inline-flex;
     }
 
-    .header-more-panel {
-        top: 46px;
-    }
-
     .icon-btn {
         width: 42px;
         height: 42px;
@@ -1781,9 +1777,14 @@ body.has-bg-image .reader-page {
     }
 
     .filter-panel {
-        width: 100%;
-        right: 0;
-        left: 0;
+        position: fixed;
+
+        top: 76px;
+        left: 16px;
+        right: 16px;
+        width: auto;
+
+        max-height: calc(100vh - 110px);
     }
 
     .detail-header {
