@@ -19,27 +19,85 @@ const supportsFSAccess = typeof window.showDirectoryPicker === "function";
 /* Nhận diện điện thoại/tablet thật (khác với cửa sổ desktop bị thu hẹp) —
    dựa vào userAgent HOẶC (màn hình cảm ứng thô + màn hình hẹp) cùng lúc,
    để không nhầm desktop Brave (đã có luồng dự phòng riêng) với mobile thật */
-const isMobileDevice =
-    /Android|iPhone|iPad|iPod|Mobile|IEMobile/i.test(navigator.userAgent) ||
-    (window.matchMedia("(pointer: coarse)").matches && window.matchMedia("(max-width: 900px)").matches);
+/* =====================================================
+   CHẾ ĐỘ HIỂN THỊ: Tự động / Mobile / Desktop
+
+   Trước đây chỉ tự nhận diện theo thiết bị (không chỉnh được).
+   Giờ có 3 lựa chọn: Tự động (theo bề rộng màn hình thật),
+   hoặc ép cứng Mobile/Desktop — để vị trí các nút luôn chính
+   xác, chủ động, không phụ thuộc hoàn toàn vào việc tự co giãn.
+===================================================== */
+
+let viewModePreference = localStorage.getItem("vt-view-mode") || "auto"; // "auto" | "mobile" | "desktop"
+
+const mobileWidthQuery = window.matchMedia("(max-width: 700px)");
+
+function getEffectiveViewMode() {
+    if (viewModePreference === "mobile") return "mobile";
+    if (viewModePreference === "desktop") return "desktop";
+    return mobileWidthQuery.matches ? "mobile" : "desktop";
+}
 
 /* Trên mobile, tạo/mở thư mục local không được hỗ trợ tốt (cả File System
    Access API lẫn cách dự phòng đều chập chờn/không có trên di động) —
-   nên đẩy Google Drive lên làm lựa chọn chính, ẩn bớt lối local đi */
-function applyMobileMode() {
+   nên đẩy Google Drive lên làm lựa chọn chính, ẩn bớt lối local đi.
+   Áp dụng cho cả CSS layout (class "view-mobile") lẫn phần nội dung này. */
+function applyViewMode() {
 
-    if (!isMobileDevice) return;
+    const mode = getEffectiveViewMode();
 
-    document.getElementById("heroInitBtn")?.classList.add("hidden");
-    document.getElementById("heroDriveBtn")?.classList.remove("hidden");
-    document.getElementById("openFolderBtn")?.classList.add("hidden");
+    document.documentElement.classList.toggle("view-mobile", mode === "mobile");
+
+    document.getElementById("heroInitBtn")?.classList.toggle("hidden", mode === "mobile");
+    document.getElementById("heroDriveBtn")?.classList.toggle("hidden", mode !== "mobile");
+    document.getElementById("openFolderBtn")?.classList.toggle("hidden", mode === "mobile");
 
     const desc = document.getElementById("heroDescription");
     if (desc) {
-        desc.textContent =
-            "Trên điện thoại, cách đọc mượt nhất là kết nối thư viện qua Google Drive.";
+        desc.textContent = mode === "mobile"
+            ? "Trên điện thoại, cách đọc mượt nhất là kết nối thư viện qua Google Drive."
+            : "Đọc truyện trực tiếp từ máy tính, không cần upload, không cần server.";
     }
+
+    if (dataFolder) {
+        document.getElementById("mobileGuideBanner")?.classList.add("hidden");
+    } else {
+        document.getElementById("mobileGuideBanner")?.classList.toggle("hidden", mode !== "mobile");
+    }
+
+    updateViewModeLabel();
 }
+
+function cycleViewMode() {
+
+    const order = ["auto", "mobile", "desktop"];
+    const nextIndex = (order.indexOf(viewModePreference) + 1) % order.length;
+    viewModePreference = order[nextIndex];
+
+    try {
+        localStorage.setItem("vt-view-mode", viewModePreference);
+    } catch (error) {
+        console.warn("Không thể lưu chế độ hiển thị:", error);
+    }
+
+    applyViewMode();
+}
+
+function updateViewModeLabel() {
+
+    const btn = document.getElementById("viewModeBtn");
+    if (!btn) return;
+
+    const modeText = { auto: "Tự động", mobile: "Mobile", desktop: "Desktop" }[viewModePreference];
+    btn.title = `Chế độ hiển thị: ${modeText} — bấm để đổi`;
+    btn.classList.toggle("is-forced", viewModePreference !== "auto");
+}
+
+// Chỉ tự đổi theo bề rộng màn hình khi đang ở chế độ "Tự động"
+mobileWidthQuery.addEventListener("change", () => {
+    if (viewModePreference === "auto") applyViewMode();
+});
+
 let readOnlyMode = false;
 let activeSource = null; // "local" | "fallback" | "drive" — dùng để quyết định hiện nút làm mới riêng từng bộ
 
@@ -3353,7 +3411,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     applyBgOverlayOpacity(bgOverlayOpacity);
     await loadBackgroundImage();
 
-    applyMobileMode();
+    applyViewMode();
 
     const sortRadio = document.querySelector(`input[name="sortOrder"][value="${sortOrder}"]`);
     if (sortRadio) sortRadio.checked = true;
@@ -3387,11 +3445,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // Đã có thư viện rồi thì thôi, không cần nhắc dùng Drive nữa —
-    // ngược lại (mobile mà chưa có gì) thì mới hiện banner gợi ý
-    if (dataFolder) {
-        document.getElementById("mobileGuideBanner")?.classList.add("hidden");
-    } else if (isMobileDevice) {
-        document.getElementById("mobileGuideBanner")?.classList.remove("hidden");
-    }
+    // Cập nhật lại banner/hero theo đúng trạng thái thư viện vừa xong
+    applyViewMode();
 });

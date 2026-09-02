@@ -20,6 +20,12 @@
             <path d="M10 13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
         </symbol>
 
+        <symbol id="icon-device" viewBox="0 0 24 24">
+            <rect x="2" y="4" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M6 18h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="17" y="9" width="6" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        </symbol>
+
         <symbol id="icon-more" viewBox="0 0 24 24">
             <circle cx="5" cy="12" r="1.8" fill="currentColor"/>
             <circle cx="12" cy="12" r="1.8" fill="currentColor"/>
@@ -215,6 +221,7 @@
             <button class="icon-btn" onclick="showHome()" title="Trang chủ"><svg class="icon"><use href="#icon-home"></use></svg></button>
             <button class="icon-btn" onclick="openDataFolder()" title="Mở thư mục thư viện" id="openFolderBtn"><svg class="icon"><use href="#icon-folder"></use></svg></button>
             <button class="icon-btn" onclick="openDriveModal()" title="Kết nối Google Drive"><svg class="icon"><use href="#icon-cloud"></use></svg></button>
+            <button class="icon-btn" onclick="cycleViewMode()" title="Chế độ hiển thị: Tự động — bấm để đổi" id="viewModeBtn"><svg class="icon"><use href="#icon-device"></use></svg></button>
 
             <button class="icon-btn header-secondary" onclick="openAppearanceModal()" title="Giao diện"><svg class="icon"><use href="#icon-palette"></use></svg></button>
             <button class="icon-btn header-secondary" onclick="openBackupModal()" title="Backup dữ liệu"><svg class="icon"><use href="#icon-backup"></use></svg></button>

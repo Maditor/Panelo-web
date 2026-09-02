@@ -156,6 +156,15 @@ body.has-bg-image::before {
     background: #292930;
 }
 
+#viewModeBtn.is-forced {
+    background: var(--accent);
+    color: white;
+}
+
+#viewModeBtn.is-forced:hover {
+    background: #7c3aed;
+}
+
 
 /* ================= PAGE ================= */
 
@@ -1740,86 +1749,84 @@ body.has-bg-image .reader-page {
 
 /* ================= RESPONSIVE ================= */
 
-@media (max-width: 700px) {
+/* Toàn bộ khối này giờ điều khiển bằng class "view-mobile" trên <html>,
+   do JS gắn vào — tự động theo kích thước màn hình (mặc định), HOẶC theo
+   đúng lựa chọn thủ công của người dùng qua nút chuyển Desktop/Mobile,
+   để không phụ thuộc hoàn toàn vào việc tự co giãn theo màn hình nữa. */
 
-    .header-secondary {
-        display: none;
-    }
+html.view-mobile .header-secondary {
+    display: none;
+}
 
-    .header-more-wrap {
-        display: inline-flex;
-    }
+html.view-mobile .header-more-wrap {
+    display: inline-flex;
+}
 
-    .icon-btn {
-        width: 42px;
-        height: 42px;
-    }
+html.view-mobile .icon-btn {
+    width: 42px;
+    height: 42px;
+}
 
-    .page {
-        padding: 20px;
-    }
+html.view-mobile .page {
+    padding: 20px;
+}
 
-    .hero {
-        padding: 30px;
-    }
+html.view-mobile .hero {
+    padding: 30px;
+}
 
-    .section-header {
-        align-items: stretch;
-        flex-direction: column;
-    }
+html.view-mobile .section-header {
+    align-items: stretch;
+    flex-direction: column;
+}
 
-    .search {
-        width: 100%;
-    }
+html.view-mobile .search {
+    width: 100%;
+}
 
-    .search-row {
-        width: 100%;
-    }
+html.view-mobile .search-row {
+    width: 100%;
+}
 
-    .filter-panel {
-        position: fixed;
+html.view-mobile .filter-panel {
+    /* vẫn neo ngay dưới đúng nút đã bấm (position: absolute kế thừa từ
+       .filter-wrap) — chỉ nới rộng ra bằng đơn vị theo màn hình (vw),
+       không tính theo bề rộng nhỏ xíu của chính cái nút nữa */
+    width: min(85vw, 300px);
+}
 
-        top: 76px;
-        left: 16px;
-        right: 16px;
-        width: auto;
+html.view-mobile .detail-header {
+    flex-direction: column;
+}
 
-        max-height: calc(100vh - 110px);
-    }
+html.view-mobile .detail-cover {
+    width: 180px;
+}
 
-    .detail-header {
-        flex-direction: column;
-    }
+html.view-mobile .reconnect-banner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 20px;
+}
 
-    .detail-cover {
-        width: 180px;
-    }
+html.view-mobile .reader-title-wrap {
+    display: none;
+}
 
-    .reconnect-banner {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 14px 20px;
-    }
+html.view-mobile .pages-per-view-btn {
+    padding: 0 8px;
+}
 
-    .reader-title-wrap {
-        display: none;
-    }
+html.view-mobile .pages-per-view-btn span {
+    display: none;
+}
 
-    .pages-per-view-btn {
-        padding: 0 8px;
-    }
+html.view-mobile .reader-tools {
+    right: 10px;
+    bottom: 80px;
+}
 
-    .pages-per-view-btn span {
-        display: none;
-    }
-
-    .reader-tools {
-        right: 10px;
-        bottom: 80px;
-    }
-
-    .reader-tools > button {
-        width: 38px;
-        height: 38px;
-    }
+html.view-mobile .reader-tools > button {
+    width: 38px;
+    height: 38px;
 }
