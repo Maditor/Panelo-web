@@ -225,16 +225,23 @@
             <button class="icon-btn" onclick="showHome()" title="Trang chủ"><svg class="icon"><use href="#icon-home"></use></svg></button>
             <button class="icon-btn" onclick="openDataFolder()" title="Mở thư mục thư viện" id="openFolderBtn"><svg class="icon"><use href="#icon-folder"></use></svg></button>
             <button class="icon-btn" onclick="openDriveModal()" title="Kết nối Google Drive"><svg class="icon"><use href="#icon-cloud"></use></svg></button>
-            <div class="view-mode-group" title="Chế độ hiển thị">
-                <button class="view-mode-option" data-mode="auto" onclick="setViewMode('auto')" title="Tự động">
-                    <svg class="icon icon-sm"><use href="#icon-sparkles"></use></svg>
+            <div class="filter-wrap view-mode-wrap">
+                <button class="icon-btn" id="viewModeTrigger" onclick="toggleViewModePanel(event)" title="Chế độ hiển thị: Tự động — bấm để đổi">
+                    <svg class="icon"><use href="#icon-sparkles"></use></svg>
                 </button>
-                <button class="view-mode-option" data-mode="desktop" onclick="setViewMode('desktop')" title="Desktop">
-                    <svg class="icon icon-sm"><use href="#icon-monitor"></use></svg>
-                </button>
-                <button class="view-mode-option" data-mode="mobile" onclick="setViewMode('mobile')" title="Mobile">
-                    <svg class="icon icon-sm"><use href="#icon-phone"></use></svg>
-                </button>
+                <div id="viewModePanel" class="filter-panel hidden">
+                    <div class="filter-tag-list">
+                        <div class="chapter-item view-mode-item" data-mode="auto" onclick="setViewMode('auto')">
+                            <span class="chapter-name"><svg class="icon icon-sm"><use href="#icon-sparkles"></use></svg> Tự động</span>
+                        </div>
+                        <div class="chapter-item view-mode-item" data-mode="desktop" onclick="setViewMode('desktop')">
+                            <span class="chapter-name"><svg class="icon icon-sm"><use href="#icon-monitor"></use></svg> Desktop</span>
+                        </div>
+                        <div class="chapter-item view-mode-item" data-mode="mobile" onclick="setViewMode('mobile')">
+                            <span class="chapter-name"><svg class="icon icon-sm"><use href="#icon-phone"></use></svg> Mobile</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <button class="icon-btn header-secondary" onclick="openAppearanceModal()" title="Giao diện"><svg class="icon"><use href="#icon-palette"></use></svg></button>

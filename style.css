@@ -156,46 +156,21 @@ body.has-bg-image::before {
     background: #292930;
 }
 
-.view-mode-group {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-
-    padding: 3px;
-
-    border-radius: 11px;
-    background: var(--surface2);
-}
-
-.view-mode-option {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 30px;
-    height: 30px;
-
-    border: 0;
-    border-radius: 8px;
-
-    background: transparent;
-    color: var(--muted);
-
-    cursor: pointer;
-    transition: background .15s, color .15s;
-}
-
-.view-mode-option:hover {
-    color: white;
-}
-
-.view-mode-option.active {
+#viewModeTrigger.is-forced {
     background: var(--accent);
     color: white;
 }
 
-.view-mode-option.active:hover {
+#viewModeTrigger.is-forced:hover {
     background: #7c3aed;
+}
+
+.view-mode-item.is-selected {
+    color: var(--accent2);
+}
+
+.view-mode-item.is-selected .chapter-name {
+    font-weight: 700;
 }
 
 

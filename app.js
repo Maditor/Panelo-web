@@ -81,6 +81,14 @@ function applyViewMode() {
     updateViewModeLabel();
 }
 
+function toggleViewModePanel(event) {
+
+    if (event) event.stopPropagation();
+
+    const panel = document.getElementById("viewModePanel");
+    panel.classList.toggle("hidden");
+}
+
 function setViewMode(mode) {
 
     if (!["auto", "mobile", "desktop"].includes(mode)) return;
@@ -94,12 +102,22 @@ function setViewMode(mode) {
     }
 
     applyViewMode();
+
+    document.getElementById("viewModePanel")?.classList.add("hidden");
 }
 
 function updateViewModeLabel() {
 
-    document.querySelectorAll(".view-mode-option").forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.mode === viewModePreference);
+    const trigger = document.getElementById("viewModeTrigger");
+
+    if (trigger) {
+        const modeText = { auto: "Tự động", mobile: "Mobile", desktop: "Desktop" }[viewModePreference];
+        trigger.title = `Chế độ hiển thị: ${modeText} — bấm để đổi`;
+        trigger.classList.toggle("is-forced", viewModePreference !== "auto");
+    }
+
+    document.querySelectorAll(".view-mode-item").forEach(item => {
+        item.classList.toggle("is-selected", item.dataset.mode === viewModePreference);
     });
 }
 
@@ -1788,7 +1806,7 @@ function closeHeaderMorePanel() {
 
 document.addEventListener("click", (event) => {
 
-    ["filterPanel", "sortPanel", "headerMorePanel"].forEach(panelId => {
+    ["filterPanel", "sortPanel", "headerMorePanel", "viewModePanel"].forEach(panelId => {
 
         const panel = document.getElementById(panelId);
         if (!panel || panel.classList.contains("hidden")) return;
