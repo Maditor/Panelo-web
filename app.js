@@ -69,7 +69,7 @@ function applyViewMode() {
     if (desc) {
         desc.textContent = mode === "mobile"
             ? "Trên điện thoại, cách đọc mượt nhất là kết nối thư viện qua Google Drive."
-            : "Đọc truyện trực tiếp từ máy tính, không cần upload, không cần server.";
+            : "Lưu ở đâu, đọc ở đó.";
     }
 
     if (dataFolder) {
