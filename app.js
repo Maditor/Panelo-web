@@ -30,12 +30,25 @@ const supportsFSAccess = typeof window.showDirectoryPicker === "function";
 
 let viewModePreference = localStorage.getItem("vt-view-mode") || "auto"; // "auto" | "mobile" | "desktop"
 
-const mobileWidthQuery = window.matchMedia("(max-width: 700px)");
+/* Nhận diện "đây có phải điện thoại thật không" — dựa vào KHẢ NĂNG THIẾT BỊ
+   (có ngón tay chạm thô + không có hover chuột) chứ KHÔNG dựa vào bề rộng
+   cửa sổ. Bề rộng là cách nhận diện sai: 1 cửa sổ desktop bị thu nhỏ vẫn có
+   chuột thật (pointer: fine, có hover), còn điện thoại thật luôn là
+   pointer: coarse + hover: none, bất kể màn hình to hay nhỏ. */
+function detectDeviceType() {
+    try {
+        const coarse = window.matchMedia("(pointer: coarse)").matches;
+        const noHover = window.matchMedia("(hover: none)").matches;
+        return (coarse && noHover) ? "mobile" : "desktop";
+    } catch {
+        return "desktop"; // trình duyệt cũ không hỗ trợ matchMedia này — mặc định desktop
+    }
+}
 
 function getEffectiveViewMode() {
     if (viewModePreference === "mobile") return "mobile";
     if (viewModePreference === "desktop") return "desktop";
-    return mobileWidthQuery.matches ? "mobile" : "desktop";
+    return detectDeviceType(); // "auto" — chỉ nhận diện tại đúng thời điểm gọi, không lắng nghe resize
 }
 
 /* Trên mobile, tạo/mở thư mục local không được hỗ trợ tốt (cả File System
@@ -92,11 +105,6 @@ function updateViewModeLabel() {
     btn.title = `Chế độ hiển thị: ${modeText} — bấm để đổi`;
     btn.classList.toggle("is-forced", viewModePreference !== "auto");
 }
-
-// Chỉ tự đổi theo bề rộng màn hình khi đang ở chế độ "Tự động"
-mobileWidthQuery.addEventListener("change", () => {
-    if (viewModePreference === "auto") applyViewMode();
-});
 
 let readOnlyMode = false;
 let activeSource = null; // "local" | "fallback" | "drive" — dùng để quyết định hiện nút làm mới riêng từng bộ
