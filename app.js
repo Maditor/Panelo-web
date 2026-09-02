@@ -2039,6 +2039,7 @@ async function showBook(book, fromHistory = false) {
     document.getElementById("homePage").classList.remove("active");
     document.getElementById("readerPage").classList.remove("active");
     document.getElementById("detailPage").classList.add("active");
+    document.body.classList.remove("reader-active");
 
     if (!fromHistory) pushHistoryState({ view: "detail", bookName: book.name });
 
@@ -2201,6 +2202,7 @@ async function openChapter(index, opts = {}) {
     document.getElementById("homePage").classList.remove("active");
     document.getElementById("detailPage").classList.remove("active");
     document.getElementById("readerPage").classList.add("active");
+    document.body.classList.add("reader-active");
 
     document.getElementById("readerTitle").textContent = `${currentBook.title} • ${chapter.name}`;
 
@@ -2441,11 +2443,11 @@ function renderChapterContent() {
             : `${currentPageIndex + 1}`;
 
         nav.innerHTML = `
-            <button onclick="prevPage()">${icon("chevron-left", "icon-sm")} Trước</button>
+            <button onclick="prevPage()">${icon("chevron-left", "icon-sm")} <span class="page-nav-label">Trước</span></button>
             <span class="page-jump-trigger" onclick="openPageJumpInput(this)" title="Bấm để nhảy tới trang">
                 <span class="page-jump-label">${rangeLabel}</span> / ${currentChapterImages.length}
             </span>
-            <button onclick="nextPage()">Sau ${icon("chevron-right", "icon-sm")}</button>
+            <button onclick="nextPage()"><span class="page-nav-label">Sau</span> ${icon("chevron-right", "icon-sm")}</button>
         `;
         reader.appendChild(nav);
     }
@@ -2864,6 +2866,7 @@ function showHome(fromHistory = false) {
     document.getElementById("detailPage").classList.remove("active");
     document.getElementById("readerPage").classList.remove("active");
     document.getElementById("homePage").classList.add("active");
+    document.body.classList.remove("reader-active");
 
     if (!fromHistory) pushHistoryState({ view: "home" });
 }
